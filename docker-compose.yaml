@@ -1,0 +1,42 @@
+
+services:
+  web:
+    image: nginx/nginx-unprivileged:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+      # Add HTTPS when TLS is configured:
+      # - "443:8443"
+    volumes:
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./app:/var/www/html:ro
+    depends_on:
+      - app
+    networks:
+      - frontend
+      - backend
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  app:
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - backend
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - SETGID
+      - SETUID
+
+networks:
+  frontend:
+  backend:
+    internal: true
