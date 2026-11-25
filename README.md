@@ -1,6 +1,7 @@
 # DSA PHP
-
-Small PHP project for exploring data structures and algorithms in a custom MVC-style micro-framework. The app runs with Docker, Nginx, and PHP-FPM.
+!Currently being re-written and updated!
+Small PHP project for exploring data structures and algorithms in a custom MVC-style micro-framework. More DSAs and visualizations will be implemented over time.
+The app runs with Docker, Nginx, and PHP-FPM.
 
 ## Routes
 
@@ -19,43 +20,12 @@ Small PHP project for exploring data structures and algorithms in a custom MVC-s
 ## Run the project
 
 ```bash
-git clone git@gitlab.com:shellwitch/dsa-php.git
+git clone git@gitlab.com:suuankou/dsa-php.git
 cd dsa-php
 docker compose up
 ```
 
 The application is available at `http://localhost:80`.
-
-## Service
-
-| Service | URL |
-| --- | --- |
-| App | http://localhost:80 |
-
-## Project structure
-
-```text
-app/
-├── public/
-│   ├── favicon.ico
-│   ├── favicon-16x16.png
-│   ├── favicon-32x32.png
-│   └── index.php
-├── controllers/
-├── views/
-│   ├── bubble_sort/
-│   ├── dsa_arrays/
-│   ├── fibonacci/
-│   └── partials/
-├── Core/
-│   ├── Prints/
-│   └── Sorting/
-├── routes.php
-└── config.php
-nginx/
-php/
-docker-compose.yaml
-```
 
 ## Useful commands
 
@@ -67,8 +37,6 @@ docker compose logs -f
 docker compose exec app sh
 ```
 
-## Stack
-
-- Nginx
-- PHP 8.5 FPM (Alpine)
-- Docker Compose
+## Plans
+- Chartjs or own library for better DSA visualization
+- Proper PHP refactor and cleanup, aswell as docker setup.
